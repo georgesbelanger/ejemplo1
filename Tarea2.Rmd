@@ -1,0 +1,80 @@
+---
+title: "Tarea 2"
+author: "Georges Belanger - 131529"
+output: html_document
+---
+
+### Descripcion
+
+Utilizando el lenguaje R resuelva la tarea. Para las primeras 10 preguntas condisere el conjunto de datos iris. 
+1. Describa brevemente el conjunto de datos. Utilice los siguientes comandos en R:
+
+```{r}
+library(datasets)
+data(iris)
+?iris
+```
+
+2. Utilizando la funcion str indique el numero de obervaciones y variables así como el tipo de variables
+(e.g., numeric, character, factor, etc)
+```{r}
+str(iris)
+sapply(iris,class)
+
+```
+
+3. Utilizando la funcion is.na y sum indique el numero total de valores faltantes (NA).
+
+```{r}
+sum(is.na(iris))
+
+```
+Hay cero valores faltantes
+
+4. Utilizando la funcion colSums y colMeans (consulte la ayuda) obtenga el total y el promedio de cada
+variable de tipo numeric.
+
+```{r}
+colSums(cbind(iris$Sepal.Length,iris$Sepal.Width,iris$Petal.Length,iris$Petal.Width))
+colMeans(cbind(iris$Sepal.Length,iris$Sepal.Width,iris$Petal.Length,iris$Petal.Width))
+```
+
+5.- Consulte la ayuda y verifique los resultados de la pregunta anterior utilizando la funcion sapply y las funciones sum y mean.
+
+```{r}
+irislistnum <- list(iris$Sepal.Length,iris$Sepal.Width,iris$Petal.Length,iris$Petal.Width)
+sapply(irislistnum,sum)
+sapply(irislistnum,mean)
+```
+
+6.- Realice una consulta e indique las observaciones (i.e., los renglones) cuya variable Sepal.Length es mayor
+o igual a 5.84 (revise los operadores logicos vistos en clase). Apoyese de la funcion which.
+
+```{r}
+which(iris$Sepal.Length >= 5.84)
+
+```
+
+7.- Con base en la pregunta anterior, calcule la suma y el promedio de las observaciones cuya variable
+Sepal.Length es mayor o igual a 5.84.
+
+sum(iris$Sepal.Length[which(iris$Sepal.Length >= 5.84)])
+
+
+
+8. Haciendo uso de la ayuda, realice una consulta utilizando la funcion subset de aquellas observaciones
+cuya variable Sepal.Length es mayor a 5.4 y la especie (i.e., variable Species) es \setosa". El resultado es
+un extracto del conjunto de datos iris
+
+```{r}
+subset(iris, Sepal.Length > 5.4 & Species == "setosa" )
+
+```
+
+9. Utilizando el operador %in% incluya la especie \virginica" (i.e., a la pregunta anterior incluya la especie
+\virginica").
+
+
+
+
+
